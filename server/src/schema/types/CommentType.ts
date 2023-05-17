@@ -7,5 +7,6 @@ export const CommentType = new GraphQLObjectType({
         createdby: { type: GraphQLInt},
         postid: { type: GraphQLInt},
         content: { type: GraphQLString },
+        parentid: { type: GraphQLInt }
     })
 })

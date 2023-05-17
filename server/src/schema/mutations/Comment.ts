@@ -8,10 +8,11 @@ export const CREATE_COMMENT = {
     createdby: { type: GraphQLInt },
     postid: { type: GraphQLInt },
     content: { type: GraphQLString },
+    parentid: { type: GraphQLInt }
   },
   async resolve(parent: any, args: any) {
-    const { createdby, postid, content } = args;
-    await Comments.insert({ createdby, postid, content });
+    const { createdby, postid, content, parentid } = args;
+    await Comments.insert({ createdby, postid, content, parentid });
     return args;
   },
 };

@@ -20,8 +20,7 @@ const btnStyles = {
 };
 
 const style = {
-  maxWidth: 1000,
-  marginLeft: 40,
+  width: "75%",
   display: "flex",
   flexDirection: "column",
   gap: "2rem",
@@ -37,18 +36,22 @@ export default function CommentForm({ id, parentID, createdby }: Props) {
   const [createComment, { error }] = useMutation(CREATE_COMMENT);
 
   const submitComment = (e: any) => {
-    e.preventDefault();
-    if (parentID === 0 && !error) {
-      createComment({
-        variables: {
-          createdby: createdby,
-          postid: id,
-          content: content,
-        },
-      });
-    } else {
-      console.log(id);
-    }
+      e.preventDefault();
+      console.log(createdby, typeof createdby, id, typeof id, parentID, content);
+
+      if(!error){
+        createComment({
+          variables: {
+            createdby: createdby,
+            postid: id,
+            content: content,
+            parentid: parentID
+          },
+        });
+      }
+      
+      setContent("");
+    setIsLoading(false)
   };
 
   return (

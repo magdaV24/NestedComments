@@ -48,7 +48,7 @@ export default function Login({ open, handleClose }: Props) {
     e.preventDefault();
     setIsLoading(true);
     login(e, { username: username, password: password });
-    navigate("/dashboard")
+    // navigate("/dashboard")
     setIsLoading(false);
   };
 

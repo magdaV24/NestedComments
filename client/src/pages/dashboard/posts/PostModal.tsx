@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import CommentForm from "../comments/CommentForm";
 import useLocalStorage from "../../../hooks/useLocalStorage";
+import CommentList from "../comments/CommentList";
 
 interface Props {
   postId: number;
@@ -17,6 +18,16 @@ interface Props {
   handleClose: () => void;
 }
 
+const styles = {
+  marginTop: 5,
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  gap: 0,
+  overflow: "scroll",
+  bgcolor: "background.paper",
+};
+
 export default function PostModal({
   open,
   handleClose,
@@ -24,12 +35,22 @@ export default function PostModal({
   title,
   content,
 }: Props) {
-  const {id} = useLocalStorage()
+  const { id } = useLocalStorage();
   return (
-    <Modal open={open} onClose={handleClose}>
-      <Box>
+    <Modal open={open} onClose={handleClose} sx={styles}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          height: "100%"
+        }}
+      >
         <Card
-          sx={{ maxWidth: 1000, marginTop: 5, height: 150, marginLeft: 40 }}
+          sx={{ maxWidth: "75%", marginTop: 5, height: "fit-content", 
+          bgcolor: "background.paper" }}
           component="div"
         >
           <CardHeader title={title} />
@@ -39,7 +60,8 @@ export default function PostModal({
             </Typography>
           </CardContent>
         </Card>
-        <CommentForm id={postId} parentID={0} createdby={id}/>
+        <CommentForm id={postId} parentID={0} createdby={id} />
+        <CommentList postId={postId} />
       </Box>
     </Modal>
   );

@@ -13,4 +13,7 @@ export class Comments extends BaseEntity {
 
   @Column()
   content!: string;
+
+  @Column()
+  parentid!: number;
 }

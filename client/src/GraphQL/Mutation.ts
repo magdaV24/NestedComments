@@ -33,22 +33,12 @@ export const CREATE_POST = gql`
 `;
 
 export const CREATE_COMMENT = gql`
-  mutation createComment($createdby: Int, $postid: Int, $content: String){
-    createComment(createdby: $createdby, postid: $postid, content: $content){
+  mutation createComment($createdby: Int, $postid: Int, $content: String, $parentid: Int){
+    createComment(createdby: $createdby, postid: $postid, content: $content, parentid: $parentid){
       createdby
       postid
       content
-    }
-  }
-`
-
-export const CREATE_CHILD = gql`
-  mutation createChild($createdby: Int, $postid: Int, $parentid: Int, $content: String){
-    createChild(createdby: $createdby, postid: $postid, parentid: $parentid, content: $content){
-      createdby
-      postid
       parentid
-      content
     }
   }
 `

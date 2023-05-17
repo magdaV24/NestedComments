@@ -9,7 +9,7 @@ export default function PostList() {
     <Box sx={{ marginLeft: 45 }}>
       {data &&
         data.getPosts.map((post: any) => (
-          <PostCard title={post.title} content={post.content} key={post.id} id={post.id}/>
+          <PostCard title={post.title} content={post.content} key={post.id} id={parseInt(post.id, 10)}/>
         ))}
     </Box>
   );

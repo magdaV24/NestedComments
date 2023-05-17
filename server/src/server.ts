@@ -6,8 +6,6 @@ import { schema } from "./schema/server";
 import { Users } from "./entities/Users";
 import { Posts } from "./entities/Posts";
 import { Comments } from "./entities/Comments";
-import { Children } from "./entities/Children";
-import { expressjwt } from "express-jwt";
 import dotenv from "dotenv";
 
 const main = () => {
@@ -20,7 +18,7 @@ const main = () => {
     password: DB_PASSWORD,
     logging: true,
     synchronize: false,
-    entities: [Users, Posts, Comments, Children],
+    entities: [Users, Posts, Comments],
   });
   const app = express();
   app.use(cors());
