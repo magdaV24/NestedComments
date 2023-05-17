@@ -2,32 +2,32 @@ import { ThemeOptions } from "@mui/material/styles";
 
 export const darkTheme: ThemeOptions = {
   palette: {
-    mode: "dark",
+    mode: 'dark',
     primary: {
-      main: "#f4511e",
+      main: '#4dd0e1',
     },
     secondary: {
-      main: "#689f38",
+      main: '#f06292',
     },
     background: {
-      default: "#2f1109",
-      paper: "#1e0e0a",
+      default: '#01201b',
+      paper: '#021613',
     },
   },
 };
 
 export const lightTheme: ThemeOptions = {
   palette: {
-    mode: "light",
+    mode: 'light',
     primary: {
-      main: "#f57f17",
+      main: '#7e57c2',
     },
     secondary: {
-      main: "#2b155e",
+      main: '#224c24',
     },
     background: {
-      default: "#ffcc80",
-      paper: "#e8ca9f",
+      default: '#d1c4e9',
+      paper: '#e1bee7',
     },
   },
 };

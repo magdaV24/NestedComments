@@ -10,7 +10,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const light = createTheme(lightTheme);
   const dark = createTheme(darkTheme);
   const theme = darkMode ? dark : light;

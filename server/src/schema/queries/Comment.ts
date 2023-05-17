@@ -12,10 +12,11 @@ export const GET_COMMENTS = {
 export const GET_POST_COMMENTS = {
     type: new GraphQLList(CommentType),
     args: {
-        postid: { type: GraphQLInt }
+        postid: { type: GraphQLInt },
+        parentid: { type: GraphQLInt } 
     },
     resolve: async (parent: any, args: any) => {
-        const { postid } = args;
-        return Comments.find({where: { postid }});
+        const { postid, parentid } = args;
+        return Comments.find({where: { postid, parentid }});
     }
 }

@@ -22,8 +22,8 @@ export default function PostCard({ id, title, content }: Props) {
 
   return (
     <>
-    <Card sx={{ maxWidth: 500, marginTop: 5, height: 150 }} component='div' data-aos="fade-left">
-      <CardActionArea sx={{ height: "100%" }} onClick={() => setShowModal(true)}>
+    <Card sx={{ maxWidth: 700, marginTop: 5, minHeight: 150, height: "fit-content" }} component='div' data-aos="fade-left">
+      <CardActionArea sx={{ height: "100%", padding: 2 }} onClick={() => setShowModal(true)}>
       <CardHeader
           title={title}
          />

@@ -20,13 +20,15 @@ const btnStyles = {
 };
 
 const style = {
-  width: "75%",
+  width: "100%",
   display: "flex",
   flexDirection: "column",
   gap: "2rem",
-  bgcolor: "background.paper",
+  bgcolor: "secondary.light",
   boxShadow: 24,
   p: 4,
+  marginTop: 2,
+  color: "white"
 };
 
 export default function CommentForm({ id, parentID, createdby }: Props) {
@@ -37,8 +39,6 @@ export default function CommentForm({ id, parentID, createdby }: Props) {
 
   const submitComment = (e: any) => {
       e.preventDefault();
-      console.log(createdby, typeof createdby, id, typeof id, parentID, content);
-
       if(!error){
         createComment({
           variables: {
@@ -56,7 +56,7 @@ export default function CommentForm({ id, parentID, createdby }: Props) {
 
   return (
     <Box sx={style} component="form" onSubmit={submitComment}>
-      <Typography variant="h6">Write a comment!</Typography>
+      <Typography variant="h6" color="white">Write a comment!</Typography>
       <TextField
         margin="normal"
         required

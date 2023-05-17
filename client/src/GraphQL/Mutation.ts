@@ -42,3 +42,10 @@ export const CREATE_COMMENT = gql`
     }
   }
 `
+export const FIND_USER_BY_ID = gql`
+  mutation getUserById($id: Int) {
+    getUserById(id: $id) {
+      username
+    }
+  }
+`;

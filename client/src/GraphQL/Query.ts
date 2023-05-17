@@ -9,17 +9,10 @@ export const GET_POSTS = gql`
     }
   }
 `;
-export const FIND_USER_BY_ID = gql`
-  query getUserById($id: Int) {
-    getUserById(id: $id) {
-      username
-    }
-  }
-`;
 
 export const GET_POST_COMMENTS = gql`
-  query getPostComments($postid: Int) {
-    getPostComments(postid: $postid) {
+  query getPostComments($postid: Int, $parentid: Int) {
+    getPostComments(postid: $postid, parentid: $parentid) {
       id
       content
       postid

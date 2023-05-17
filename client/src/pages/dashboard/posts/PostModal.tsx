@@ -19,13 +19,14 @@ interface Props {
 }
 
 const styles = {
-  marginTop: 5,
-  height: "100%",
+  minHeight: "100%",
+  height: "fit-content",
   display: "flex",
   flexDirection: "column",
-  gap: 0,
-  overflow: "scroll",
+  gap: 3,
   bgcolor: "background.paper",
+  overflow: "scroll",
+  //position: "absolute"
 };
 
 export default function PostModal({
@@ -45,12 +46,22 @@ export default function PostModal({
           alignItems: "center",
           justifyContent: "center",
           width: "100%",
-          height: "100%"
+          maxHeight: "fit-content",
+          //height: "fit-content",
+          bgcolor: "background.paper",
+          padding: 5,
+          overflowY: "scroll",
+          gap: 3,
+          position: "absolute"
         }}
       >
         <Card
-          sx={{ maxWidth: "75%", marginTop: 5, height: "fit-content", 
-          bgcolor: "background.paper" }}
+          sx={{
+            maxWidth: "100%",
+            height: "fit-content",
+            bgcolor: "background.paper",
+            boxShadow: "none"
+          }}
           component="div"
         >
           <CardHeader title={title} />
@@ -61,7 +72,7 @@ export default function PostModal({
           </CardContent>
         </Card>
         <CommentForm id={postId} parentID={0} createdby={id} />
-        <CommentList postId={postId} />
+        <CommentList postId={postId} parentId={0}/>
       </Box>
     </Modal>
   );

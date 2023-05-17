@@ -33,18 +33,3 @@ export const FIND_USER = {
     return user
   },
 };
-
-export const FIND_USER_BY_ID = {
-  type: UserType,
-  args:{
-    id: {type: GraphQLInt }
-  },
-  resolve: async (parent: any, args: any) => {
-    const { id } = args;
-    const user = await Users.findOne({where: { id }});
-    if(!user){
-      throw new Error("There is no user with this id!");
-    }
-    return user
-  }
-}
