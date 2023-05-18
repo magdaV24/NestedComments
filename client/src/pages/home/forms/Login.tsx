@@ -1,12 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import { Modal, Box, TextField, Link } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { LoadingButton } from "@mui/lab";
-import { useCallback, useEffect, useState } from "react";
-import { useMutation } from "@apollo/client";
-import { FIND_USER } from "../../../GraphQL/Mutation";
+import { useState } from "react";
 import { useLogin } from "../../../hooks/useLogin";
-//import { useLogin } from "../../../hooks/useLogin";
 
 interface Props {
   open: boolean;
@@ -41,18 +37,14 @@ export default function Login({ open, handleClose }: Props) {
   const [password, setPassword] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
 
-  const { login, currentUser, token } = useLogin();
+  const { login } = useLogin();
   const loginUser = (e: any) => {
     e.preventDefault();
     setIsLoading(true);
     login(e, { username: username, password: password });
-    // navigate("/dashboard")
     setIsLoading(false);
   };
-
-  console.log(currentUser, token);
 
   return (
     <>

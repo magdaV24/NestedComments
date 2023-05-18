@@ -36,8 +36,8 @@ export function useLogin() {
 
   const logout = (e: any) => {
     e.preventDefault();
-    
+    localStorage.clear();
   }
 
-  return { currentUser, token, login };
+  return { currentUser, token, login, logout };
 }

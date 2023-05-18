@@ -8,11 +8,13 @@ export const CREATE_COMMENT = {
     createdby: { type: GraphQLInt },
     postid: { type: GraphQLInt },
     content: { type: GraphQLString },
-    parentid: { type: GraphQLInt }
+    parentid: { type: GraphQLInt },
+    username: { type: GraphQLString },
+
   },
   async resolve(parent: any, args: any) {
-    const { createdby, postid, content, parentid } = args;
-    await Comments.insert({ createdby, postid, content, parentid });
+    const { createdby, postid, content, parentid, username } = args;
+    await Comments.insert({ createdby, postid, content, parentid, username });
     return args;
   },
 };
@@ -20,10 +22,30 @@ export const CREATE_COMMENT = {
 export const DELETE_COMMENT = {
   type: CommentType,
   args: {
-    id: {type: GraphQLID}
+    id: {type: GraphQLInt}
   },
   async resolve(args: any) {
     const id = args.id;
     await Comments.delete(id)
   },
+}
+
+export const UPATE_CONTENT = {
+  type: CommentType,
+  args: {
+    id: { type: GraphQLInt },
+    newContent: { type: GraphQLString }
+  },
+  async resolve(parent: any,args: any){
+    const { id, newContent } = args;
+    const comment = await Comments.findOne({where: { id: id }});
+
+    if(!comment){
+      throw new Error("Comment doesn't exist!");
+    }
+
+    await Comments.update({id: id}, {content: newContent})
+
+    return comment
+  }
 }

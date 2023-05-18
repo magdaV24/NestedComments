@@ -1,21 +1,16 @@
-import { useMutation, useQuery } from "@apollo/client";
 import { useState, useEffect } from "react";
-import { FIND_USER_BY_ID } from "../GraphQL/Mutation";
 
-interface Props {
-  id: number;
-}
-
-export function useUser({ id }: Props) {
-  const [getUserById] = useMutation(FIND_USER_BY_ID);
-  const [username, setUsername] = useState();
+export function useUser() {
+  
+  const user = JSON.parse(localStorage.getItem("user")!);
+  const [username, setUsername] = useState("");
+  const [userId, setUserId] = useState(0);
+  const id = parseInt(user.id, 10)
 
   useEffect(() => {
-    getUserById({ variables: { id: id } }).then((res) => {
-      setUsername(res.data.getUserById.username)
-    })
-  }, [getUserById, id]);
+    setUsername(user.username);
+    setUserId(id);
+  }, [id, user.username]);
 
-  console.log(username);
-  return {username};
+  return {username, userId};
 }

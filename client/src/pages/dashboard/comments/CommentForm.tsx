@@ -4,9 +4,9 @@ import { Box, Typography, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { useMutation } from "@apollo/client";
 import { CREATE_COMMENT } from "../../../GraphQL/Mutation";
+import { useUser } from "../../../hooks/useUser";
 
 interface Props {
-  createdby: number;
   id: number;
   parentID: number;
 }
@@ -31,21 +31,23 @@ const style = {
   color: "white"
 };
 
-export default function CommentForm({ id, parentID, createdby }: Props) {
+export default function CommentForm({ id, parentID }: Props) {
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const [createComment, { error }] = useMutation(CREATE_COMMENT);
+  const { username, userId } =  useUser();
 
   const submitComment = (e: any) => {
       e.preventDefault();
       if(!error){
         createComment({
           variables: {
-            createdby: createdby,
+            createdby: userId,
             postid: id,
             content: content,
-            parentid: parentID
+            parentid: parentID,
+            username: username
           },
         });
       }

@@ -33,12 +33,13 @@ export const CREATE_POST = gql`
 `;
 
 export const CREATE_COMMENT = gql`
-  mutation createComment($createdby: Int, $postid: Int, $content: String, $parentid: Int){
-    createComment(createdby: $createdby, postid: $postid, content: $content, parentid: $parentid){
+  mutation createComment($createdby: Int, $postid: Int, $content: String, $parentid: Int, $username: String){
+    createComment(createdby: $createdby, postid: $postid, content: $content, parentid: $parentid, username: $username){
       createdby
       postid
       content
       parentid
+      username
     }
   }
 `
@@ -49,3 +50,11 @@ export const FIND_USER_BY_ID = gql`
     }
   }
 `;
+
+export const UPDATE_CONTENT = gql`
+mutation editContent($id: Int, $newContent: String){
+  editContent(id: $id, newContent: $newContent){
+    content
+  }
+}
+`

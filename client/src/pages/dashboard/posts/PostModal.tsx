@@ -7,7 +7,6 @@ import {
   Typography,
 } from "@mui/material";
 import CommentForm from "../comments/CommentForm";
-import useLocalStorage from "../../../hooks/useLocalStorage";
 import CommentList from "../comments/CommentList";
 
 interface Props {
@@ -26,7 +25,6 @@ const styles = {
   gap: 3,
   bgcolor: "background.paper",
   overflow: "scroll",
-  //position: "absolute"
 };
 
 export default function PostModal({
@@ -36,18 +34,16 @@ export default function PostModal({
   title,
   content,
 }: Props) {
-  const { id } = useLocalStorage();
   return (
     <Modal open={open} onClose={handleClose} sx={styles}>
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: "center",
           width: "100%",
           maxHeight: "fit-content",
-          //height: "fit-content",
           bgcolor: "background.paper",
           padding: 5,
           overflowY: "scroll",
@@ -71,7 +67,8 @@ export default function PostModal({
             </Typography>
           </CardContent>
         </Card>
-        <CommentForm id={postId} parentID={0} createdby={id} />
+        <CommentForm id={postId} parentID={0}/>
+        <Typography variant="h4" sx={{width: "100%"}}>Comments:</Typography>
         <CommentList postId={postId} parentId={0}/>
       </Box>
     </Modal>

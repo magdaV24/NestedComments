@@ -18,6 +18,7 @@ export const GET_POST_COMMENTS = gql`
       postid
       createdby
       parentid
+      username
     }
   }
 `;
