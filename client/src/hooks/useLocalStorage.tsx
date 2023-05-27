@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function useLocalStorage () {
-    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("user")!))
+    const currentUser = JSON.parse(localStorage.getItem("user")!)
     const [id, setId] = useState(0);
 
     const temp = currentUser.id;

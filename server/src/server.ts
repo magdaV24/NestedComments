@@ -7,6 +7,8 @@ import { Users } from "./entities/Users";
 import { Posts } from "./entities/Posts";
 import { Comments } from "./entities/Comments";
 import dotenv from "dotenv";
+import { Likes } from "./entities/Likes";
+import { Dislikes } from "./entities/Dislikes";
 
 const main = () => {
   dotenv.config();
@@ -18,7 +20,7 @@ const main = () => {
     password: DB_PASSWORD,
     logging: true,
     synchronize: false,
-    entities: [Users, Posts, Comments],
+    entities: [Users, Posts, Comments, Likes, Dislikes],
   });
   const app = express();
   app.use(cors());

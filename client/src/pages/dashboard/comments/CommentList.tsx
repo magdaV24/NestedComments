@@ -1,8 +1,7 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { GET_POST_COMMENTS } from "../../../GraphQL/Query";
 import CommentCard from "./CommentCard";
 import { Box } from "@mui/material";
-import { UPDATE_CONTENT } from "../../../GraphQL/Mutation";
 
 interface Props {
   postId: number;

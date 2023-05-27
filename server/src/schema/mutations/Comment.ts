@@ -10,7 +10,6 @@ export const CREATE_COMMENT = {
     content: { type: GraphQLString },
     parentid: { type: GraphQLInt },
     username: { type: GraphQLString },
-
   },
   async resolve(parent: any, args: any) {
     const { createdby, postid, content, parentid, username } = args;

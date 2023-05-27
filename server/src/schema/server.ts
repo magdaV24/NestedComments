@@ -5,6 +5,8 @@ import { CREATE_COMMENT, DELETE_COMMENT, UPATE_CONTENT } from "./mutations/Comme
 import { GET_POSTS } from "./queries/Post";
 import { GET_COMMENTS, GET_POST_COMMENTS } from "./queries/Comment";
 import { FIND_USER } from "./queries/User";
+import { COUNT_LIKES, GIVE_LIKE } from "./mutations/Like";
+import { COUNT_DISLIKES, GIVE_DISLIKE } from "./mutations/Dislike";
 
 const Query = new GraphQLObjectType({
   name: "Query",
@@ -26,6 +28,10 @@ const Mutation = new GraphQLObjectType({
     getUser: FIND_USER,
     getUserById: FIND_USER_BY_ID,
     editContent: UPATE_CONTENT,
+    giveLike: GIVE_LIKE,
+    countLikes: COUNT_LIKES,
+    giveDislike: GIVE_DISLIKE,
+    countDislikes: COUNT_DISLIKES
   },
 });
 
